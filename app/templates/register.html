@@ -1,0 +1,27 @@
+{% extends "base.html" %}  {% block 'content' %}
+
+<div class="row m-5">
+    <div class="col-sm-6 offset-sm-3">
+        {% if messages %} {% for message in messages %}
+        <p {% if message.tags%} class="alert alert-{{message.tags}} mb-5" {%endif%}>{{message}}</p>
+        {% endfor %} {% endif %}
+        <h1 class="text-center">Register Your Account</h1>
+        <div class="container">
+            <form action="" method="post" class="shadow p-5">
+                {% csrf_token %} {% for fm in form %}
+                <div class="form-group mb-3">
+                    {{fm.label_tag}} {{fm}}
+                    <small class="text-danger">{{fm.errors|striptags}}</small>
+                </div>
+                {% endfor %}
+                <a class="text-primary">forget Password ? </a><br><br>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <p class="text-center my-3">
+                    <a style="text-decoration: none;" href="{% url 'login' %}" class="text-danger fw-bold">Exsisting user ? </a><a href="{% url 'login' %}">Login User</a>
+                </p>
+            </form>
+        </div>
+        
+    </div>
+</div>
+{% endblock 'content' %}

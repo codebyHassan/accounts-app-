@@ -1,0 +1,23 @@
+{% extends "base.html" %}  {% block 'content' %}
+
+<div class="row m-5">
+    <div class="col-sm-6 offset-sm-3">
+        {% if messages %} {% for message in messages %}
+        <p {% if message.tags%} class="alert alert-{{message.tags}} mb-5" {%endif%}>{{message}}</p>
+        {% endfor %} {% endif %}
+        <h1 class="text-center">Login Your Account</h1>
+        <div class="container">
+            <form action="" method="post" class="shadow p-5">
+                {% csrf_token %} 
+                <input type="text" class="form-control" name='username' placeholder="Enter username"> <br>
+                <input type="password" class="form-control" name='password' placeholder="Enter password"> <br>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <p class="text-center my-3">
+                <a  style="text-decoration: none;" href="{% url 'register' %}" class="text-danger fw-bold">Create an Account</a>
+                </p>
+            </form>
+        </div>
+        
+    </div>
+</div>
+{% endblock 'content' %}
